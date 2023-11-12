@@ -1,0 +1,13 @@
+.Genre {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px white;
+}
+.GenreItem{
+    flex: 1 0 14%;
+    margin: 3px;
+}

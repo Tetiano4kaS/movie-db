@@ -1,4 +1,5 @@
 import {IGenre} from "../../interfaces/genreInterface";
+import css from './Genre.module.css'
 
 interface IProps {
     genre: IGenre
@@ -8,7 +9,6 @@ interface IProps {
 
 const Genre = ({genre, genresIds, setGenresIds}: IProps) => {
     const {name, id} = genre;
-
 
     const handleGenresId = () => {
         if (genresIds.includes(String(id))) {
@@ -20,8 +20,8 @@ const Genre = ({genre, genresIds, setGenresIds}: IProps) => {
 
     }
     return (
-        <div>
-            <div style={{color: genresIds.includes(String(id)) ? 'green' : 'red'}}
+        <div className={css.GenreItem}>
+            <div style={{color: genresIds.includes(String(id)) ? 'darkolivegreen' : 'darkred'}}
                  onClick={() => handleGenresId()}>{name}</div>
         </div>
     );

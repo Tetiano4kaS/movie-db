@@ -1,29 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
-import {Movies} from "./components/MovieContainer/Movies";
-import {movieService} from "./services/movieService";
-import {IMovie} from "./interfaces/movieInterface";
-import {LoadingStatusEnum} from "./enums/loadingStatusEnum";
-import {Search} from "./components/SearchContainer/Search";
-import {IGenre} from "./interfaces/genreInterface";
-import {genreService} from "./services/genreService";
-import {Genres} from "./components/GenreContainer/Genres";
-import Pagination from "./Pagination/pagination";
-import {ThemeSwitcher} from "./components/ThemeSwitcher/ThemeSwitcher";
+
+import css from './MainContainer.module.css'
+import {Movies} from "../MovieContainer/Movies";
+import {movieService} from "../../services/movieService";
+import {IMovie} from "../../interfaces/movieInterface";
+import {LoadingStatusEnum} from "../../enums/loadingStatusEnum";
+import {Search} from "../SearchContainer/Search";
+import {IGenre} from "../../interfaces/genreInterface";
+import {genreService} from "../../services/genreService";
+import {Genres} from "../GenreContainer/Genres";
+import Pagination from "../../Pagination/pagination";
+import {ThemeSwitcher} from "../ThemeSwitcher/ThemeSwitcher";
 
 
-function App() {
+function MainContainer() {
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [loadingStatus, setLoadingStatus] = useState<LoadingStatusEnum>(LoadingStatusEnum.IDLE);
     const [search, setSearch] = useState<string>('')
     const [genres, setGenres] = useState<IGenre[]>([]);
     const [genresIds, setGenresIds] = useState<string>('')
-
     const [page, setPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(1)
-
-    const [theme, setTheme]=useState<boolean>(false)
-
+    const [theme, setTheme] = useState<boolean>(false)
 
     useEffect(() => {
         const getAllMovies = async () => {
@@ -38,10 +36,8 @@ function App() {
                 setMovies(movies);
                 setLoadingStatus(LoadingStatusEnum.IDLE)
             } catch (e) {
-
                 setLoadingStatus(LoadingStatusEnum.ERROR)
             }
-
         }
         getAllMovies()
     }, [search, genresIds, page])
@@ -54,16 +50,17 @@ function App() {
         }
         getGenres()
     }, [])
-    return (
-        <div className="App" style={{backgroundColor: theme ? 'green' : 'darkblue'}}>
-            <ThemeSwitcher setTheme={setTheme} theme={theme}/>
-            <Search search={search} setSearch={setSearch} setGenresIds={setGenresIds}/>
-            <Genres genres={genres} genresIds={genresIds} setGenresIds={setGenresIds}/>
-            <Movies movies={movies} loadingStatus={loadingStatus}/>
-            <Pagination totalPages={totalPages} currentPage={page} onPageChange={setPage} restartPagination={false}/>
 
+    return (
+        <div className={css.Main} style={{backgroundColor: theme ? 'snow' : 'darkgray'}}>
+            <div className={css.Theme}><ThemeSwitcher setTheme={setTheme} theme={theme}/></div>
+            <div className={css.Search}><Search search={search} setSearch={setSearch} setGenresIds={setGenresIds}/>
+            </div>
+            <div><Genres genres={genres} genresIds={genresIds} setGenresIds={setGenresIds}/></div>
+            <div><Movies movies={movies} loadingStatus={loadingStatus}/></div>
+            <Pagination totalPages={totalPages} currentPage={page} onPageChange={setPage} restartPagination={false}/>
         </div>
     );
 }
 
-export default App;
+export default MainContainer;

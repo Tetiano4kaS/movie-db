@@ -37,7 +37,7 @@ const Pagination: React.FC<IProps> = ({totalPages, currentPage, onPageChange, re
     const renderPage = (page: number) => (
         <button
             key={page}
-            style={{backgroundColor: page === currentPage ? "red" : ""}}
+            style={{backgroundColor: page === currentPage ? "green" : ""}}
             onClick={() => onPageChange(page)}
         >
             {page}

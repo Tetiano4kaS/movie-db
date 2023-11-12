@@ -1,16 +1,16 @@
-import {useEffect, useMemo, useState} from "react";
+import {useMemo} from "react";
+
 import {IMovie} from "../../interfaces/movieInterface";
-import {movieService} from "../../services/movieService";
 import Movie from "./Movie";
 import {LoadingStatusEnum} from "../../enums/loadingStatusEnum";
 
-export interface IProps{
+export interface IProps {
     movies: IMovie[],
-    loadingStatus:LoadingStatusEnum
+    loadingStatus: LoadingStatusEnum
 }
 
-const Movies = (props:IProps) => {
-    const {movies,loadingStatus}=props
+const Movies = (props: IProps) => {
+    const {movies, loadingStatus} = props
 
     const renderItems = useMemo(
         () =>
@@ -25,7 +25,7 @@ const Movies = (props:IProps) => {
             switch (loadingStatus) {
                 case LoadingStatusEnum.IDLE:
                     return movies?.length > 0 ? (
-                        <ul >{renderItems}</ul>
+                        <ul style={{display: "flex", flexWrap: "wrap"}}>{renderItems}</ul>
                     ) : (
                         <div>There is no elements yet...</div>
                     );

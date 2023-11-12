@@ -1,5 +1,6 @@
 import {IGenre} from "../../interfaces/genreInterface";
 import {Genre} from "./Genre";
+import css from './Genre.module.css'
 
 interface IProps {
     genres: IGenre[],
@@ -7,9 +8,9 @@ interface IProps {
     setGenresIds: (value: string) => void
 }
 
-const Genres = ({genres,genresIds, setGenresIds}: IProps) => {
+const Genres = ({genres, genresIds, setGenresIds}: IProps) => {
     return (
-        <ul>
+        <ul className={css.Genre}>
             {genres.map(genre => <Genre key={genre.id} genre={genre} genresIds={genresIds} setGenresIds={setGenresIds}/>)}
         </ul>
     );

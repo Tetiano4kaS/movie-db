@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {BsFillMoonStarsFill} from "react-icons/bs";
 import {FaRegSun} from "react-icons/fa";
 

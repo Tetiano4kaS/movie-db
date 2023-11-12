@@ -1,0 +1,15 @@
+.Main {
+    text-align: center;
+}
+
+.Search {
+    display: flex;
+    justify-content: right;
+    padding-right: 2%;
+}
+
+.Theme {
+    display: flex;
+    justify-content: right;
+    padding-right: 2.5%;
+}

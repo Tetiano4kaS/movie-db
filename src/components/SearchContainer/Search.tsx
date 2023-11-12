@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 interface IProps {
     search: string
     setSearch: (value: string) => void
-    setGenresIds: (value:string)=>void
+    setGenresIds: (value: string) => void
 }
 
 const Search = (props: IProps) => {
