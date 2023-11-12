@@ -13,7 +13,7 @@ const Detail = ({detail}: IProps) => {
     return (
         <div className={css.Detail}>
             <h2>{title}</h2>
-            <img src={`https://image.tmdb.org/t/p/w300${poster_path}`}/>
+            <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={"poster image"}/>
             <h5>Popularity: {popularity}</h5>
             <h5><MovieRating vote_average={vote_average}/></h5>
             <h5>Release date: {release_date}</h5>
