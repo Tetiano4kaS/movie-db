@@ -11,9 +11,7 @@ const ThemeSwitcher = ({setTheme, theme}: IProps) => {
 
     return (
         <div>
-            <div
-                onClick={() => setTheme((prevState: boolean) => !prevState)}
-            >
+            <div onClick={() => setTheme((prevState: boolean) => !prevState)}>
                 {theme ? <BsFillMoonStarsFill/> : <FaRegSun/>}
             </div>
         </div>
